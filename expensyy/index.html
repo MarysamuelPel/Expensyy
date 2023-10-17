@@ -32,7 +32,7 @@ body {
 /* Header styles */
 h1 {
     font-size: 28px;
-    color: #3498db;
+    color: rgba(0, 0, 50, 1);
     margin-bottom: 50px;
     margin-top: 20px;
     text-align: center;
@@ -46,7 +46,7 @@ form {
 label {
     font-weight: bold;
     font-size: 16px; 
-    color: #3498db; 
+    color: rgba(0, 0, 50, 1);
 }
 
 input[type="text"],
@@ -60,10 +60,14 @@ input[type="date"] {
     transition: border-color 0.3s;
 }
 
+/*the input boxes */
 input[type="text"]:focus,
 input[type="number"]:focus,
 input[type="date"]:focus {
-    border-color: #3498db;
+    border: 1px solid #3498db; 
+    box-shadow: 0 0 10px #3498db; 
+    background-color: #f0f7fc; 
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 /* Button styles */
@@ -106,12 +110,9 @@ th {
 
 /* Total expenses section */
 #total-expenses {
-    font-size: 24px;
+    font-size: 20px;
     color: red;
     margin-top: 20px;
-}
-.naira{
-    color: red;
 }
 
     </style>
@@ -120,7 +121,7 @@ th {
 
 <body>
     <div class="container">
-        <h1>Expensyy (Expense Tracker)</h1>
+        <h1>Expensyy </h1>
         <form id="expense-form">
             <label for="date">Date:</label>
             <input type="date" id="date" required><br><br>
@@ -148,7 +149,7 @@ th {
             <tbody id="expense-list">
             </tbody>
         </table>
-        <h3>Total Expenses: <span id="total-expenses"> N0.00</span></h3>
+        <h3>Total Expenses: N<span id="total-expenses"> 0.00</span></h3>
     </div>
 
     <!-- Javascript Component -->
