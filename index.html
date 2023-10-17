@@ -1,220 +1,494 @@
-  <!DOCTYPE html>
-  <html>
-  <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expensyy</title>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expensyy - Your Financial Adventure</title>
     <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+        }
+
+        #logo {
+            font-size: 24px;
+            color: black;
+            margin-left: 50px;
+            font-family: fantasy;
+        }
+
+        #nav {
+            margin-right: 20px;
+        }
+
+        #nav a {
+    text-decoration: none;
+    color: #282a2b;
+    margin: 0 10px;
+    font-weight: bold;
+    position: relative;
 }
 
-/* Body and font styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+#nav a:hover {
+    color: #3498db;
 }
 
-/* Container styles */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff; 
-    border-radius: 10px; 
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); 
+#nav a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #3498db;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-/* Header styles */
-h1 {
-    font-size: 28px;
-    color: rgba(0, 0, 50, 1);
-    margin-bottom: 50px;
+#nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+#nav a:active {
+    color: #3498db;
+}
+
+
+        #hero {
+            background: url('./expensyy/images/expense.jpg') right center/contain no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            margin-left: 50px;
+        }
+
+        #hero p {
+            color: #3498db;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        #hero h1 {
+            font-size: 40px;
+            margin-top: 4px;
+            font-weight: bolder;
+        }
+
+        #get-started {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        #get-started:hover {
+            background-color: #2186c9;
+        }
+
+        #why-expenssy {
+            background-color: #f5f5f5;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        #why-expenssy-title {
+            color: #3498db;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin: 40px;
+        }
+
+        .why-box-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .why-box {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            transform: translateY(-20px);
+            transition: transform 0.5s, box-shadow 0.3s, transform 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .why-box h2 {
+            color: #3498db;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .why-box p {
+            font-size: 18px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .why-box:hover {
+            transform: translateY(0);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #join-us-title {
+    font-size: 32px;
+    color: #3498db;
+    font-weight: bold;
+    margin: 15rem 20px 20px 4px ;
+}
+
+#join-us-content {
+    text-align: left;
+    margin-left:10px ;
+    margin-right: 10px;
+}
+
+#join-us-content p {
+    font-size: 18px;
+    color: #666;
+    margin: 20px 0;
+}
+
+#join-us-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
     margin-top: 20px;
+    display: inline-block;
+}
+
+#join-us-button:hover {
+    background-color: #2186c9;
+}
+
+#join-us-section {
+    background: url('./expensyy/images/join\ us.jpg') right center/contain no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    margin-right: 50px;
+}
+
+
+
+#contact-us {
+    background-color: #f5f5f5;
+    padding: 20px;
     text-align: center;
 }
 
-/* Form styles */
-form {
-    display: grid;
-}
-
-label {
+#contact-us-title {
+    color: #3498db;
+    font-size: 36px;
     font-weight: bold;
-    font-size: 16px; 
-    color: rgba(0, 0, 50, 1);
+    margin: 40px 0;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"] {
+#contact-form {
+    background-color: #3498db;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: white;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    margin-top: 5px;
+    border: none;
     border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
 }
 
-/*the input boxes */
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus {
-    border: 1px solid #3498db; 
-    box-shadow: 0 0 10px #3498db; 
-    background-color: #f0f7fc; 
-    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+.form-group textarea {
+    resize: vertical;
 }
 
-/* Button styles */
-button {
-    background-color: #3498db; 
-    color: #fff; 
+button[type="submit"] {
+    background-color: white;
+    color: #3498db;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    width: 50%;
-    margin-left: 175px;
-    margin-bottom: 50px;
     font-weight: bold;
-    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #2186c9; 
+#form-error-message {
+    color: red;
+    font-weight: bold;
 }
 
-/* Table styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.hidden {
+    display: none;
 }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
+footer {
     background-color: #3498db; 
     color: #fff;
+    padding: 20px 0;
 }
 
-/* Total expenses section */
-#total-expenses {
-    font-size: 20px;
-    color: red;
-    margin-top: 20px;
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
+
+.footer-logo img {
+    width: 100px;
+    margin-right: 50px;
+}
+
+.footer-info {
+    flex: 2;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-social {
+    flex: 1;
+    margin-left: 200px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+
 
     </style>
 </head>
-
-
 <body>
-    <div class="container">
-        <h1>Expensyy </h1>
-        <form id="expense-form">
-            <label for="date">Date:</label>
-            <input type="date" id="date" required><br><br>
-            <label for="amount">Amount (N):</label>
-            <input type="number" id="amount" step="0.01" required><br><br>
-            <label for="description">Description:</label>
-            <input type="text" id="description" required><br><br>
-            <label for="category">Category:</label>
-            <input type="text" id="category" required><br><br>
-            <label for="payment-method">Payment Method:</label>
-            <input type="text" id="payment-method" required><br><br>
-            <button type="button" onclick="addExpense()">Add Expense</button>
-        </form>
-        <h3>Expense List</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Amount (N)</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Payment Method</th>
-                </tr>
-            </thead>
-            <tbody id="expense-list">
-            </tbody>
-        </table>
-        <h3>Total Expenses: N<span id="total-expenses"> 0.00</span></h3>
+
+    <!-- HERO SECTION -->
+    <header>
+        <div id="logo" href="#hero">Ex<span style="color: #3498db;">pen</span>syy</div>
+        <nav id="nav">
+            <a href="#hero">HOME</a>
+            <a href="#why-expenssy">WHY EXPENSYY</a>
+            <a href="#join-us-section">JOIN US</a>
+            <a href="#contact-us">CONTACT US</a>
+        </nav>
+    </header>
+
+    <div id="hero">
+        <p>Welcome to Expensyy</p>
+        <h1>Your Financial Adventure <br> Awaits</h1>
+        <a id="get-started" href="expense.html">Get Started Now</a>
+
+    </div>
+    <!-- WHY EXPENSYY -->
+    <div id="why-expenssy">
+        <div id="why-expenssy-title">Why Expensyy?</div>
+        <div class="why-box-container">
+            <div class="why-box">
+                <h2>Simplicity</h2>
+                <p>We've designed Expenssy to be user-friendly, so you can start 
+                    tracking your expenses effortlessly.</p>
+            </div>
+            <div class="why-box">
+                <h2>Security</h2>
+                <p>Your financial data is protected with state-of-the-art security
+                     features.</p>
+            </div>
+            <div class="why-box">
+                <h2>Customization</h2>
+                <p>Tailor Expenssy to fit your unique financial journey with
+                     customizable categories and budgets.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Javascript Component -->
+   <!-- JOIN US SECTION -->
+    <div id="join-us-section">
+        <div id="join-us-title">Join the Expenssy Community</div>
+        <div id="join-us-content">
+            <p>
+                Ready to take control of your finances? <br>Join the Expenssy community 
+                today and unlock a world <br> of financial possibilities. 
+                Sign up for a free account now.
+            </p>
+            <a id="join-us-button" href="expense.html">Join Us</a>
+        </div>
+    </div>
+
+   <!-- CONTACT US SECTION -->
+    <div id="contact-us">
+        <div id="contact-us-title">Contact Us</div>
+        <div id="contact-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="form-error-message" class="hidden">Please fill out all fields 
+                correctly.</div>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="./expensyy/images/expensyylogo.png" alt="Expensyy Logo">
+            </div>
+            <div class="footer-info">
+                <p>Contact Us: contact@expensyy.com</p>
+                <p>123 Main Street, Lagos State, Nigeria</p>
+                <p>Phone: +234-703-563-1881</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#why-expenssy">Why Expensyy</a></li>
+                    <li><a href="#join-us-section">Join Us</a></li>
+                    <li><a href="#contact-us">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT COMPONENT OF PAGE -->
     <script>
-        // Initialize an array to store expenses
-        let expenses = [];
+      //javascript function for form submission
+      document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const formErrorMessage = document.getElementById('form-error-message');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
 
-        function addExpense() {
-            const date = document.getElementById("date").value;
-            const amount = parseFloat(document.getElementById("amount").value);
-            const description = document.getElementById("description").value;
-            const category = document.getElementById("category").value;
-            const paymentMethod = document.getElementById("payment-method").value;
+    contactForm.addEventListener('submit', function(event) {
+        if (!isFormValid()) {
+            event.preventDefault(); // Prevent form submission
+            formErrorMessage.classList.remove('hidden');
+        }
+    });
 
-            // Validate input
-            if (!date || isNaN(amount) || !description || !category || !paymentMethod) {
-                alert("Please fill in all fields.");
-                return;
-            }
+    function isFormValid() {
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
 
-            // Create an expense object
-            const expense = {
-                date,
-                amount,
-                description,
-                category,
-                paymentMethod,
-            };
-
-            // Add expense to the array
-            expenses.push(expense);
-
-            // Update the table and total expenses
-            updateTable();
-            updateTotalExpenses();
-
-            // Clear the form
-            document.getElementById("expense-form").reset();
+        if (name === '' || email === '' || message === '') {
+            return false;
         }
 
-        function updateTable() {
-            const expenseList = document.getElementById("expense-list");
-            expenseList.innerHTML = "";
-
-            for (let i = 0; i < expenses.length; i++) {
-                const expense = expenses[i];
-                const row = expenseList.insertRow();
-
-                row.innerHTML = `
-                    <td>${expense.date}</td>
-                    <td>N${expense.amount.toFixed(2)}</td>
-                    <td>${expense.description}</td>
-                    <td>${expense.category}</td>
-                    <td>${expense.paymentMethod}</td>
-                `;
-            }
+        if (!isValidEmail(email)) {
+            return false;
         }
 
+        return true;
+    }
 
-        function updateTotalExpenses() {
-            const totalExpenses = document.getElementById("total-expenses");
-            const total = expenses.reduce((acc, expense) => acc + expense.amount, 0);
-            totalExpenses.textContent = total.toFixed(2);
+    function isValidEmail(email) {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+    }
+});
+   
+    // javascript code for smooth scroll
+const navLinks = document.querySelectorAll('nav a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
         }
+    });
+});
+
     </script>
 </body>
 </html>
-
