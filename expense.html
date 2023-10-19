@@ -1,220 +1,231 @@
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
   <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;400;500&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:wght@700&family=Roboto:ital,wght@0,100;0,300;1,100;1,300;1,400&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
     <title>Expensyy</title>
 
     <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-/* Body and font styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-}
+      /* Body and font styles */
+      body {
+        font-family: "lato", sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+      }
 
-/* Container styles */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff; 
-    border-radius: 10px; 
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); 
-}
+      /* Container styles */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      }
 
-/* Header styles */
-h1 {
-    font-size: 28px;
-    color: rgba(0, 0, 50, 1);
-    margin-bottom: 50px;
-    margin-top: 20px;
-    text-align: center;
-}
+      /* Header styles */
+      h1 {
+        font-size: 28px;
+        color: rgba(0, 0, 50, 1);
+        margin-bottom: 50px;
+        margin-top: 20px;
+        text-align: center;
+      }
 
-/* Form styles */
-form {
-    display: grid;
-}
+      /* Form styles */
+      form {
+        display: grid;
+      }
 
-label {
-    font-weight: bold;
-    font-size: 16px; 
-    color: rgba(0, 0, 50, 1);
-}
+      label {
+        font-weight: bold;
+        font-size: 16px;
+        color: rgba(0, 0, 50, 1);
+      }
 
-input[type="text"],
-input[type="number"],
-input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-}
+      input[type="text"],
+      input[type="number"],
+      input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
 
-/*the input boxes */
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus {
-    border: 1px solid #3498db; 
-    box-shadow: 0 0 10px #3498db; 
-    background-color: #f0f7fc; 
-    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
-}
+      /*the input boxes */
+      input[type="text"]:focus,
+      input[type="number"]:focus,
+      input[type="date"]:focus {
+        border: 1px solid #3498db;
+        box-shadow: 0 0 10px #3498db;
+        background-color: #f0f7fc;
+        transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+      }
 
-/* Button styles */
-button {
-    background-color: #3498db; 
-    color: #fff; 
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 50%;
-    margin-left: 175px;
-    margin-bottom: 50px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
+      /* Button styles */
+      button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 50%;
+        margin-left: 175px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
 
-button:hover {
-    background-color: #2186c9; 
-}
+      button:hover {
+        background-color: #2186c9;
+      }
 
-/* Table styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+      /* Table styles */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-}
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
 
-th {
-    background-color: #3498db; 
-    color: #fff;
-}
+      th {
+        background-color: #3498db;
+        color: #fff;
+      }
 
-/* Total expenses section */
-#total-expenses {
-    font-size: 20px;
-    color: #333;
-    margin-top: 20px;
-}
-
+      /* Total expenses section */
+      #total-expenses {
+        font-size: 20px;
+        color: #333;
+        margin-top: 20px;
+      }
     </style>
-</head>
+  </head>
 
-
-<body>
+  <body>
     <div class="container">
-        <h1>Expensyy </h1>
-        <form id="expense-form">
-            <label for="date">Date:</label>
-            <input type="date" id="date" required><br><br>
-            <label for="amount">Amount (N):</label>
-            <input type="number" id="amount" step="0.01" required><br><br>
-            <label for="description">Description:</label>
-            <input type="text" id="description" required><br><br>
-            <label for="category">Category:</label>
-            <input type="text" id="category" required><br><br>
-            <label for="payment-method">Payment Method:</label>
-            <input type="text" id="payment-method" required><br><br>
-            <button type="button" onclick="addExpense()">Add Expense</button>
-        </form>
-        <h3>Expense List</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Amount (N)</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Payment Method</th>
-                </tr>
-            </thead>
-            <tbody id="expense-list">
-            </tbody>
-        </table>
-        <h3>Total Expenses: N<span id="total-expenses"> 0.00</span></h3>
+      <h1>Expensyy</h1>
+      <form id="expense-form">
+        <label for="date">Date:</label>
+        <input type="date" id="date" required /><br /><br />
+        <label for="amount">Amount (N):</label>
+        <input type="number" id="amount" step="0.01" required /><br /><br />
+        <label for="description">Description:</label>
+        <input type="text" id="description" required /><br /><br />
+        <label for="category">Category:</label>
+        <input type="text" id="category" required /><br /><br />
+        <label for="payment-method">Payment Method:</label>
+        <input type="text" id="payment-method" required /><br /><br />
+        <button type="button" onclick="addExpense()">Add Expense</button>
+      </form>
+      <h3>Expense List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount (N)</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Payment Method</th>
+          </tr>
+        </thead>
+        <tbody id="expense-list"></tbody>
+      </table>
+      <h3>Total Expenses: N<span id="total-expenses"> 0.00</span></h3>
     </div>
 
     <!-- Javascript Component -->
     <script>
-        // Initialize an array to store expenses
-        let expenses = [];
+      // Initialize an array to store expenses
+      let expenses = [];
 
-        function addExpense() {
-            const date = document.getElementById("date").value;
-            const amount = parseFloat(document.getElementById("amount").value);
-            const description = document.getElementById("description").value;
-            const category = document.getElementById("category").value;
-            const paymentMethod = document.getElementById("payment-method").value;
+      function addExpense() {
+        const date = document.getElementById("date").value;
+        const amount = parseFloat(document.getElementById("amount").value);
+        const description = document.getElementById("description").value;
+        const category = document.getElementById("category").value;
+        const paymentMethod = document.getElementById("payment-method").value;
 
-            // Validate input
-            if (!date || isNaN(amount) || !description || !category || !paymentMethod) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            // Create an expense object
-            const expense = {
-                date,
-                amount,
-                description,
-                category,
-                paymentMethod,
-            };
-
-            // Add expense to the array
-            expenses.push(expense);
-
-            // Update the table and total expenses
-            updateTable();
-            updateTotalExpenses();
-
-            // Clear the form
-            document.getElementById("expense-form").reset();
+        // Validate input
+        if (
+          !date ||
+          isNaN(amount) ||
+          !description ||
+          !category ||
+          !paymentMethod
+        ) {
+          alert("Please fill in all fields.");
+          return;
         }
 
-        function updateTable() {
-            const expenseList = document.getElementById("expense-list");
-            expenseList.innerHTML = "";
+        // Create an expense object
+        const expense = {
+          date,
+          amount,
+          description,
+          category,
+          paymentMethod,
+        };
 
-            for (let i = 0; i < expenses.length; i++) {
-                const expense = expenses[i];
-                const row = expenseList.insertRow();
+        // Add expense to the array
+        expenses.push(expense);
 
-                row.innerHTML = `
+        // Update the table and total expenses
+        updateTable();
+        updateTotalExpenses();
+
+        // Clear the form
+        document.getElementById("expense-form").reset();
+      }
+
+      function updateTable() {
+        const expenseList = document.getElementById("expense-list");
+        expenseList.innerHTML = "";
+
+        for (let i = 0; i < expenses.length; i++) {
+          const expense = expenses[i];
+          const row = expenseList.insertRow();
+
+          row.innerHTML = `
                     <td>${expense.date}</td>
                     <td>N${expense.amount.toFixed(2)}</td>
                     <td>${expense.description}</td>
                     <td>${expense.category}</td>
                     <td>${expense.paymentMethod}</td>
                 `;
-            }
         }
+      }
 
-
-        function updateTotalExpenses() {
-            const totalExpenses = document.getElementById("total-expenses");
-            const total = expenses.reduce((acc, expense) => acc + expense.amount, 0);
-            totalExpenses.textContent = total.toFixed(2);
-        }
+      function updateTotalExpenses() {
+        const totalExpenses = document.getElementById("total-expenses");
+        const total = expenses.reduce(
+          (acc, expense) => acc + expense.amount,
+          0
+        );
+        totalExpenses.textContent = total.toFixed(2);
+      }
     </script>
-</body>
+  </body>
 </html>
-

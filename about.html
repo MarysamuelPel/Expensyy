@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;400;500&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:wght@700&family=Roboto:ital,wght@0,100;0,300;1,100;1,300;1,400&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Expensyy | About</title>
+
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --light-color: #f3f3f3;
+        --dark-color:#fff;
+        --max-width: 1100px;
+      }
+
+      .category {
+        --ent-color: #a66bbe;
+        --tech-color: #009cff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "lato", sans-serif;
+        line-height: 1.5;
+        background: var(--light-color);
+      }
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      p {
+        margin: 0.5rem 0;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "lato", cursive;
+        margin-bottom: 0.55rem;
+        line-height: 1.3;
+      }
+
+      /* utility */
+      .container {
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 0 2rem;
+        overflow: hidden;
+      }
+      .category {
+        display: inline-block;
+        color: #fff;
+        font-size: 0.55rem;
+        text-transform: uppercase;
+        padding: 0.4rem 0.6rem;
+        border-radius: 15px;
+        margin-bottom: 0.5rem;
+      }
+
+      .category-sport {
+        background: var(--sports-color);
+      }
+      .category-ent {
+        background: var(--ent-color);
+      }
+      .category-tech {
+        background: var(--tech-color);
+      }
+
+      .btn {
+        display: inline-block;
+        border: none;
+        background: var(--dark-color);
+        color: #3498db;
+        padding: 0.5rem 1.5rem;
+      }
+      .btn-light {
+        background: var(--light-color);
+      }
+      .btn-primary {
+        background: white;
+        color: #3498db;
+      }
+      .btn-secondary {
+        background: var(--secondary-color);
+        color: #3498db;
+      }
+
+      .btn-block {
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-radius: 12px;
+        color: #3498db;
+      }
+
+      .btn:hover {
+        opacity: 0.9;
+      }
+      .card {
+        background: #fff;
+        padding: 1rem;
+      }
+
+      .bg-dark {
+        background: var(--dark-color);
+        color: #3498db;
+      }
+      .bg-primary {
+        background: var(--primary-color);
+        color: #fff;
+        margin-top: 31.5px;
+      }
+      .bg-secondary {
+        background: var(--dark-color);
+        color: #3498db;
+      }
+
+      .bg-dark h1,
+      .bg-dark h2,
+      .bg-dark h3,
+      .bg-dark a,
+      .bg-primary h1,
+      .bg-primary h2,
+      .bg-primary h3,
+      .bg-primary a,
+      .bg-secondary h1,
+      .bg-secondary h2,
+      .bg-secondary h3,
+      .bg-secondary a {
+        color: #fff;
+      }
+
+      .py-1 {
+        padding: 1.5rem 0;
+      }
+      .py-2 {
+        padding: 2rem 0;
+      }
+      .py-3 {
+        padding: 3rem 0;
+      }
+      .p-1 {
+        padding: 1.5rem;
+      }
+      .p-2 {
+        padding: 2rem;
+      }
+      .p-3 {
+        padding: 3rem;
+      }
+
+      .l-heading {
+        font-size: 3rem;
+      }
+
+      .list li {
+        padding: 0.5rem;
+        border-bottom: #555 dotted 1px;
+        width: 90%;
+      }
+
+      .list li a:hover {
+        color: var(--primary-color) !important;
+      }
+      /* inner page grid container */
+      .page-container {
+        display: grid;
+        grid-template-columns: 5fr 2fr;
+      }
+
+      .page-container > *:first-child {
+        grid-row: 1 / span 3;
+        margin: 2rem 0;
+        gap: 1.5rem;
+      }
+      /* Navigation */
+      #main-nav {
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+
+      #main-nav .container {
+        display: grid;
+        grid-template-columns: 6fr 3fr 2fr;
+        padding: 1rem;
+        align-items: center;
+      }
+      #main-nav .logo {
+        width: 80px;
+      }
+      #main-nav ul {
+        justify-self: end;
+        display: flex;
+      }
+      #main-nav ul li a {
+        padding: 0.75rem;
+        font-weight: bold;
+      }
+      #main-nav ul li a.current {
+        background: var(--primary-color);
+        color: #fff;
+      }
+      #main-nav ul li a:hover {
+        background: var(--light-color);
+        color: var(--dark-color);
+      }
+      #main-nav .social {
+        justify-self: center;
+      }
+      #main-nav .docial i {
+        color: #777;
+        margin-right: 0.5rem;
+      }
+      /* showcase */
+      #showcase {
+        color: #fff;
+        background: #333;
+        padding: 2rem;
+        position: relative;
+      }
+      #showcase:before {
+        content: "";
+        background: url("/IMG/footballnewsweb.jpg") no-repeat center
+          center/cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+      }
+
+      #showcase .showcase-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+      }
+      #showcase .showcase-content {
+        z-index: 1;
+      }
+      #showcase .showcase-content p {
+        margin-bottom: 1rem;
+      }
+      /* home articles */
+      #home-articles .articles-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      #home-articles .articles-container > *:first-child,
+      #home-articles .articles-container > *:last-child {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        align-items: center;
+        grid-column: 1 / span 2;
+      }
+
+      #home-articles .articles-container > *:last-child {
+        grid-column: 2 / span 2;
+      }
+
+      #article .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #eee;
+        padding: 0.5rem;
+      }
+      #article .meta .category {
+        margin-top: 0.4rem;
+      }
+      footer {
+        background-color: #3498db;
+        color: #fff;
+        padding: 20px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-logo img {
+        width: 100px;
+        margin-right: 50px;
+      }
+
+      .footer-info {
+        flex: 2;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .footer-social {
+        flex: 1;
+        margin-left: 200px;
+      }
+
+      .social-icon {
+        display: inline-block;
+        margin-right: 10px;
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav id="main-nav">
+      <div class="container">
+        <img class="logo" src="/expensyy/images/expensyylogo.png" alt="logo" />
+        <div class="social">
+          <a href="http//:facebook.com" target="_blank"
+            ><i class="fab fa-facebook fa-2x"></i
+          ></a>
+          <a href="http//:twitter.com" target="_blank"
+            ><i class="fab fa-twitter fa-2x"></i
+          ></a>
+          <a href="http//:instagram.com" target="_blank"
+            ><i class="fab fa-instagram fa-2x"></i
+          ></a>
+          <a href="http//:youtube.com" target="_blank"
+            ><i class="fab fa-youtube fa-2x"></i
+          ></a>
+        </div>
+
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a class="current" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section id="about">
+      <div class="container">
+        <div class="page-container">
+          <article class="card">
+            <h1 class="l-heading">About Expensyy</h1>
+            <p>
+              At Expensyy, we are committed to transforming the way you manage
+              your finances. Our journey began with a simple but powerful idea:
+              to provide a seamless, user-friendly platform that empowers you to
+              take control of your financial future. We understand that managing
+              your expenses and financial goals can sometimes be challenging.
+              That's why we've created a platform that combines simplicity,
+              security, and customization, designed to fit your unique financial
+              journey.
+            </p>
+
+            <h1>Our Mission</h1>
+
+            <p>
+              Our mission at Expensyy is to be your trusted partner on your
+              financial adventure. We are dedicated to providing you with the
+              tools and knowledge needed to make informed financial decisions,
+              all within a secure and supportive community.
+            </p>
+
+            <h1>Why Choose Expensyy</h1>
+            <ul>
+              <li>
+                <h4>Simplicity:</h4> We've designed Expensyy to be incredibly easy to
+                use, so you can start tracking your expenses effortlessly, even
+                if you're new to financial management.
+              </li>
+              <br />
+              <li>
+             <h4>Security:</h4>Your financial data is of utmost importance, and we
+                take your security seriously. Expensyy employs state-of-the-art
+                security features to protect your financial information.
+              </li>
+              <br />
+              <li>
+              <h4>Customization:</h4>We believe that your financial journey is unique.
+                That's why we offer customizable categories and budgets,
+                allowing you to tailor Expensyy to your specific needs.
+              </li>
+              <br>
+            </ul>
+
+            <p>
+              Expensyy is more than just an expense tracker; it's a tool for a
+              brighter financial future. Join us today and embark on your
+              journey to financial success.
+            </p>
+          </article>
+
+          <aside class="card bg-primary">
+            <h2>Join Expensyy Today</h2>
+            <p>
+              Exclusive Benefits, Thrilling Events, and Unforgettable
+              Experiences Await You!
+            </p>
+            <a href="./expense.html" class="btn btn-dark btn-block"
+            style="color: #3498db";>Join Now</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="./expensyy/images/expensyylogo.png" alt="Expensyy Logo" />
+        </div>
+        <div class="footer-info">
+          <p>Contact Us: contact@expensyy.com</p>
+          <p>123 Main Street, Lagos State, Nigeria</p>
+          <p>Phone: +234-703-563-1881</p>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="./expense.html">Join Us</a></li>
+            <li><a href="./about.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-icon">Facebook</a>
+          <a href="#" class="social-icon">Twitter</a>
+          <a href="#" class="social-icon">LinkedIn</a>
+      </div>
+  </div>
+</footer>
+  </body>
+</html>
