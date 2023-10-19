@@ -121,6 +121,13 @@
         color: #333;
         margin-top: 20px;
       }
+
+      /* Error message style */
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
     </style>
   </head>
 
@@ -129,15 +136,25 @@
       <h1>Expensyy</h1>
       <form id="expense-form">
         <label for="date">Date:</label>
-        <input type="date" id="date" required /><br /><br />
+        <input type="date" id="date" required /><br />
+        <div class="error-message" id="date-error"></div>
+
         <label for="amount">Amount (N):</label>
-        <input type="number" id="amount" step="0.01" required /><br /><br />
+        <input type="number" id="amount" step="0.01" required /><br />
+        <div class="error-message" id="amount-error"></div>
+
         <label for="description">Description:</label>
-        <input type="text" id="description" required /><br /><br />
+        <input type="text" id="description" required /><br />
+        <div class="error-message" id="description-error"></div>
+
         <label for="category">Category:</label>
-        <input type="text" id="category" required /><br /><br />
+        <input type="text" id="category" required /><br />
+        <div class="error-message" id="category-error"></div>
+
         <label for="payment-method">Payment Method:</label>
-        <input type="text" id="payment-method" required /><br /><br />
+        <input type="text" id="payment-method" required /><br />
+        <div class="error-message" id="payment-method-error"></div>
+
         <button type="button" onclick="addExpense()">Add Expense</button>
       </form>
       <h3>Expense List</h3>
@@ -156,27 +173,49 @@
       <h3>Total Expenses: N<span id="total-expenses"> 0.00</span></h3>
     </div>
 
-    <!-- Javascript Component -->
     <script>
       // Initialize an array to store expenses
       let expenses = [];
 
       function addExpense() {
-        const date = document.getElementById("date").value;
-        const amount = parseFloat(document.getElementById("amount").value);
-        const description = document.getElementById("description").value;
-        const category = document.getElementById("category").value;
-        const paymentMethod = document.getElementById("payment-method").value;
+        const dateInput = document.getElementById("date");
+        const amountInput = document.getElementById("amount");
+        const descriptionInput = document.getElementById("description");
+        const categoryInput = document.getElementById("category");
+        const paymentMethodInput = document.getElementById("payment-method");
 
-        // Validate input
-        if (
-          !date ||
-          isNaN(amount) ||
-          !description ||
-          !category ||
-          !paymentMethod
-        ) {
-          alert("Please fill in all fields.");
+        const date = dateInput.value;
+        const amount = parseFloat(amountInput.value);
+        const description = descriptionInput.value;
+        const category = categoryInput.value;
+        const paymentMethod = paymentMethodInput.value;
+
+        // Clear any previous error messages
+        clearErrorMessages();
+
+        // Validate input and display error messages
+        if (!date) {
+          displayErrorMessage(dateInput, "Please enter a date.", "date-error");
+          return;
+        }
+
+        if (isNaN(amount)) {
+          displayErrorMessage(amountInput, "Please enter a valid amount.", "amount-error");
+          return;
+        }
+
+        if (!description) {
+          displayErrorMessage(descriptionInput, "Please enter a description.", "description-error");
+          return;
+        }
+
+        if (!category) {
+          displayErrorMessage(categoryInput, "Please enter a category.", "category-error");
+          return;
+        }
+
+        if (!paymentMethod) {
+          displayErrorMessage(paymentMethodInput, "Please enter a payment method.", "payment-method-error");
           return;
         }
 
@@ -225,6 +264,16 @@
           0
         );
         totalExpenses.textContent = total.toFixed(2);
+      }
+
+      function clearErrorMessages() {
+        const errorElements = document.querySelectorAll(".error-message");
+        errorElements.forEach((element) => (element.textContent = ""));
+      }
+
+      function displayErrorMessage(inputElement, message, errorElementId) {
+        const errorMessage = document.getElementById(errorElementId);
+        errorMessage.textContent = message;
       }
     </script>
   </body>

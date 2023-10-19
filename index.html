@@ -445,59 +445,119 @@ footer {
 
     <!-- JAVASCRIPT COMPONENT OF PAGE -->
     <script>
-      //javascript function for form submission
-      document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
-    const formErrorMessage = document.getElementById('form-error-message');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
-
-    contactForm.addEventListener('submit', function(event) {
-        if (!isFormValid()) {
-            event.preventDefault(); // Prevent form submission
-            formErrorMessage.classList.remove('hidden');
+        // Initialize an array to store expenses
+        let expenses = [];
+      
+        document.addEventListener("DOMContentLoaded", function () {
+          // Add a submit event listener to the form
+          const expenseForm = document.getElementById("expense-form");
+          expenseForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+      
+            // Call the addExpense function when the form is submitted
+            addExpense();
+          });
+        });
+      
+        function addExpense() {
+          const dateInput = document.getElementById("date");
+          const amountInput = document.getElementById("amount");
+          const descriptionInput = document.getElementById("description");
+          const categoryInput = document.getElementById("category");
+          const paymentMethodInput = document.getElementById("payment-method");
+      
+          const date = dateInput.value;
+          const amount = parseFloat(amountInput.value);
+          const description = descriptionInput.value;
+          const category = categoryInput.value;
+          const paymentMethod = paymentMethodInput.value;
+      
+          // Clear any previous error messages
+          clearErrorMessages();
+      
+          // Validate input and display error messages
+          if (!date) {
+            displayErrorMessage(dateInput, "Please enter a date", "date-error");
+            return;
+          }
+      
+          if (isNaN(amount)) {
+            displayErrorMessage(amountInput, "Please enter a valid amount", "amount-error");
+            return;
+          }
+      
+          if (!description) {
+            displayErrorMessage(descriptionInput, "Please enter a description", "description-error");
+            return;
+          }
+      
+          if (!category) {
+            displayErrorMessage(categoryInput, "Please enter a category", "category-error");
+            return;
+          }
+      
+          if (!paymentMethod) {
+            displayErrorMessage(paymentMethodInput, "Please enter a payment method", "payment-method-error");
+            return;
+          }
+      
+          // Create an expense object
+          const expense = {
+            date,
+            amount,
+            description,
+            category,
+            paymentMethod,
+          };
+      
+          // Add expense to the array
+          expenses.push(expense);
+      
+          // Update the table and total expenses
+          updateTable();
+          updateTotalExpenses();
+      
+          // Clear the form
+          document.getElementById("expense-form").reset();
         }
-    });
-
-    function isFormValid() {
-        const name = nameInput.value.trim();
-        const email = emailInput.value.trim();
-        const message = messageInput.value.trim();
-
-        if (name === '' || email === '' || message === '') {
-            return false;
+      
+        function updateTable() {
+          const expenseList = document.getElementById("expense-list");
+          expenseList.innerHTML = "";
+      
+          for (let i = 0; i < expenses.length; i++) {
+            const expense = expenses[i];
+            const row = expenseList.insertRow();
+      
+            row.innerHTML = `
+                      <td>${expense.date}</td>
+                      <td>N${expense.amount.toFixed(2)}</td>
+                      <td>${expense.description}</td>
+                      <td>${expense.category}</td>
+                      <td>${expense.paymentMethod}</td>
+                  `;
+          }
         }
-
-        if (!isValidEmail(email)) {
-            return false;
+      
+        function updateTotalExpenses() {
+          const totalExpenses = document.getElementById("total-expenses");
+          const total = expenses.reduce(
+            (acc, expense) => acc + expense.amount,
+            0
+          );
+          totalExpenses.textContent = total.toFixed(2);
         }
-
-        return true;
-    }
-
-    function isValidEmail(email) {
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        return emailPattern.test(email);
-    }
-});
-   
-    // javascript code for smooth scroll
-const navLinks = document.querySelectorAll('nav a');
-
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+      
+        function clearErrorMessages() {
+          const errorElements = document.querySelectorAll(".error-message");
+          errorElements.forEach((element) => (element.textContent = ""));
         }
-    });
-});
-
-    </script>
+      
+        function displayErrorMessage(inputElement, message, errorElementId) {
+          const errorMessage = document.getElementById(errorElementId);
+          errorMessage.textContent = message;
+        }
+      </script>
+      
 </body>
 </html>
