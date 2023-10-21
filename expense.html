@@ -76,6 +76,15 @@
         transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
       }
 
+      /* Select styles */
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
       /* Button styles */
       button {
         background-color: #3498db;
@@ -128,6 +137,21 @@
         font-size: 14px;
         margin-top: 5px;
       }
+
+      @media (max-width: 600px) {
+    /* Adjust styles for smaller screens */
+    body {
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 10px;
+    }
+
+   button{
+    margin-left: 90px;
+   }
+  }
     </style>
   </head>
 
@@ -148,14 +172,50 @@
         <div class="error-message" id="description-error"></div>
 
         <label for="category">Category:</label>
-        <input type="text" id="category" required /><br />
+        <select id="category" required>
+          <option value="">Select a Category</option>
+          <option value="Personal Expenses">Personal Expenses</option>
+          <option value="Entertainment and Leisure">Entertainment and Leisure</option>
+          <option value="Health and Wellness">Health and Wellness</option>
+          <option value="Education">Education</option>
+          <option value="Housing">Housing</option>
+          <option value="Transportation">Transportation</option>
+          <option value="Debts and Loans">Debts and Loans</option>
+          <option value="Business Expenses">Business Expenses</option>
+          <option value="Food and Dining">Food and Dining</option>
+          <option value="Charity and Donations">Charity and Donations</option>
+          <option value="Savings and Investments">Savings and Investments</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Childcare and Education">Childcare and Education</option>
+          <option value="Gifts and Celebrations">Gifts and Celebrations</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+        </select>
         <div class="error-message" id="category-error"></div>
 
         <label for="payment-method">Payment Method:</label>
-        <input type="text" id="payment-method" required /><br />
+        <select id="payment-method" required>
+          <option value="">Select a Payment Method</option>
+          <option value="Cash">Cash</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+          <option value="Mobile Payment Apps">Mobile Payment Apps</option>
+          <option value="Online Payment Platforms">Online Payment Platforms</option>
+          <option value="Checks">Checks</option>
+          <option value="Cryptocurrency">Cryptocurrency</option>
+          <option value="E-Wallets">E-Wallets</option>
+          <option value="Bank Transfers">Bank Transfers</option>
+          <option value="Money Orders">Money Orders</option>
+          <option value="Traveler's Checks">Traveler's Checks</option>
+          <option value="Gift Cards">Gift Cards</option>
+          <option value="Online Banking">Online Banking</option>
+          <option value="Peer-to-Peer (P2P) Payment Services">Peer-to-Peer (P2P) Payment Services</option>
+          <option value="Prepaid Cards">Prepaid Cards</option>
+          <option value="Virtual Credit Cards">Virtual Credit Cards</option>
+          
+        </select>
         <div class="error-message" id="payment-method-error"></div>
 
-        <button type="button" onclick="addExpense()">Add Expense</button>
+        <button type="submit">Add Expense</button>
       </form>
       <h3>Expense List</h3>
       <table>
@@ -177,45 +237,56 @@
       // Initialize an array to store expenses
       let expenses = [];
 
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add a submit event listener to the form
+        const expenseForm = document.getElementById("expense-form");
+        expenseForm.addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+
+          // Call the addExpense function when the form is submitted
+          addExpense();
+        });
+      });
+
       function addExpense() {
         const dateInput = document.getElementById("date");
         const amountInput = document.getElementById("amount");
         const descriptionInput = document.getElementById("description");
-        const categoryInput = document.getElementById("category");
-        const paymentMethodInput = document.getElementById("payment-method");
+        const categorySelect = document.getElementById("category");
+        const paymentMethodSelect = document.getElementById("payment-method");
 
         const date = dateInput.value;
         const amount = parseFloat(amountInput.value);
         const description = descriptionInput.value;
-        const category = categoryInput.value;
-        const paymentMethod = paymentMethodInput.value;
+        const category = categorySelect.value;
+        const paymentMethod = paymentMethodSelect.value;
 
         // Clear any previous error messages
         clearErrorMessages();
 
         // Validate input and display error messages
         if (!date) {
-          displayErrorMessage(dateInput, "Please enter a date.", "date-error");
+          displayErrorMessage(dateInput, "Please enter a date", "date-error");
           return;
         }
 
         if (isNaN(amount)) {
-          displayErrorMessage(amountInput, "Please enter a valid amount.", "amount-error");
+          displayErrorMessage(amountInput, "Please enter a valid amount", "amount-error");
           return;
         }
 
         if (!description) {
-          displayErrorMessage(descriptionInput, "Please enter a description.", "description-error");
+          displayErrorMessage(descriptionInput, "Please enter a description", "description-error");
           return;
         }
 
-        if (!category) {
-          displayErrorMessage(categoryInput, "Please enter a category.", "category-error");
+        if (category === "") {
+          displayErrorMessage(categorySelect, "Please select a category", "category-error");
           return;
         }
 
-        if (!paymentMethod) {
-          displayErrorMessage(paymentMethodInput, "Please enter a payment method.", "payment-method-error");
+        if (paymentMethod === "") {
+          displayErrorMessage(paymentMethodSelect, "Please select a payment method", "payment-method-error");
           return;
         }
 
@@ -248,12 +319,12 @@
           const row = expenseList.insertRow();
 
           row.innerHTML = `
-                    <td>${expense.date}</td>
-                    <td>N${expense.amount.toFixed(2)}</td>
-                    <td>${expense.description}</td>
-                    <td>${expense.category}</td>
-                    <td>${expense.paymentMethod}</td>
-                `;
+                <td>${expense.date}</td>
+                <td>N${expense.amount.toFixed(2)}</td>
+                <td>${expense.description}</td>
+                <td>${expense.category}</td>
+                <td>${expense.paymentMethod}</td>
+            `;
         }
       }
 

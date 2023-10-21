@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,553 +11,713 @@
     />
     <title>Expensyy - Your Financial Adventure</title>
     <style>
-        body {
-            font-family: 'lato', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-        }
+      body {
+        font-family: "lato", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+      }
 
-        header {
-            position: sticky;
-            top: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 10px 20px;
-        }
+      header {
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 10px 20px;
+      }
 
-        #logo {
-            font-size: 24px;
-            color: black;
-            margin-left: 50px;
-            font-family: fantasy;
-        }
+      #logo {
+        font-size: 24px;
+        color: black;
+        margin-left: 50px;
+        font-family: fantasy;
+      }
 
-        #nav {
-            margin-right: 20px;
-        }
+      #nav {
+        margin-right: 20px;
+      }
 
-        #nav a {
-    text-decoration: none;
-    color: #282a2b;
-    margin: 0 10px;
-    font-weight: bold;
-    position: relative;
-}
+      #nav a {
+        text-decoration: none;
+        color: #282a2b;
+        margin: 0 10px;
+        font-weight: bold;
+        position: relative;
+      }
 
-#nav a:hover {
-    color: #3498db;
-}
+      #nav a:hover {
+        color: #3498db;
+      }
 
-#nav a::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #3498db;
-    bottom: 0;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
+      #nav a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #3498db;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+      }
 
-#nav a:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
+      #nav a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
 
-#nav a:active {
-    color: #3498db;
-}
+      #nav a:active {
+        color: #3498db;
+      }
 
+      #hero {
+        background: url("./expensyy/images/expense.jpg") right center/contain
+          no-repeat;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px;
+        margin-left: 50px;
+      }
 
-        #hero {
-            background: url('./expensyy/images/expense.jpg') right center/contain no-repeat;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
-            margin-left: 50px;
-        }
+      #hero p {
+        color: #3498db;
+        font-size: 26px;
+        font-weight: bold;
+      }
 
-        #hero p {
-            color: #3498db;
-            font-size: 26px;
-            font-weight: bold;
-        }
+      #hero h1 {
+        font-size: 40px;
+        margin-top: 4px;
+        font-weight: bolder;
+      }
 
-        #hero h1 {
-            font-size: 40px;
-            margin-top: 4px;
-            font-weight: bolder;
-        }
+      #get-started {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+      }
 
-        #get-started {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-        }
+      #get-started:hover {
+        background-color: #2186c9;
+      }
 
-        #get-started:hover {
-            background-color: #2186c9;
-        }
+      #why-expenssy {
+        background-color: #f5f5f5;
+        padding: 20px;
+        overflow: hidden;
+      }
 
-        #why-expenssy {
-            background-color: #f5f5f5;
-            padding: 20px;
-            overflow: hidden;
-        }
+      #why-expenssy-title {
+        color: #3498db;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        margin: 40px;
+      }
 
-        #why-expenssy-title {
-            color: #3498db;
-            font-size: 36px;
-            font-weight: bold;
-            text-align: center;
-            margin: 40px;
-        }
+      .why-box-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-        .why-box-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
+      .why-box {
+        flex: 1;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        transform: translateY(-20px);
+        transition: transform 0.5s, box-shadow 0.3s, transform 0.3s,
+          transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-        .why-box {
-            flex: 1;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin: 10px;
-            transform: translateY(-20px);
-            transition: transform 0.5s, box-shadow 0.3s, transform 0.3s, transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+      .why-box h2 {
+        color: #3498db;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
 
-        .why-box h2 {
-            color: #3498db;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+      .why-box p {
+        font-size: 18px;
+        color: #666;
+        margin: 10px 0;
+      }
 
-        .why-box p {
-            font-size: 18px;
-            color: #666;
-            margin: 10px 0;
-        }
+      .why-box:hover {
+        transform: translateY(0);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
 
-        .why-box:hover {
-            transform: translateY(0);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
+      #join-us-title {
+        font-size: 32px;
+        color: #3498db;
+        font-weight: bold;
+        margin: 15rem 20px 20px 4px;
+      }
 
-        #join-us-title {
-    font-size: 32px;
-    color: #3498db;
-    font-weight: bold;
-    margin: 15rem 20px 20px 4px ;
-}
+      #join-us-content {
+        text-align: left;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
 
-#join-us-content {
-    text-align: left;
-    margin-left:10px ;
-    margin-right: 10px;
-}
+      #join-us-content p {
+        font-size: 18px;
+        color: #666;
+        margin: 20px 0;
+      }
 
-#join-us-content p {
-    font-size: 18px;
-    color: #666;
-    margin: 20px 0;
-}
+      #join-us-button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+        display: inline-block;
+      }
 
-#join-us-button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    display: inline-block;
-}
+      #join-us-button:hover {
+        background-color: #2186c9;
+      }
 
-#join-us-button:hover {
-    background-color: #2186c9;
-}
+      #join-us-section {
+        background: url("./expensyy/images/join\ us.jpg") right center/contain
+          no-repeat;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20px;
+        margin-right: 50px;
+      }
 
-#join-us-section {
-    background: url('./expensyy/images/join\ us.jpg') right center/contain no-repeat;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 20px;
-    margin-right: 50px;
-}
+      #contact-us {
+        background-color: #f5f5f5;
+        padding: 20px;
+        text-align: center;
+      }
 
+      #contact-us-title {
+        color: #3498db;
+        font-size: 36px;
+        font-weight: bold;
+        margin: 40px 0;
+      }
 
+      #contact-form {
+        background-color: #3498db;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
-#contact-us {
-    background-color: #f5f5f5;
-    padding: 20px;
-    text-align: center;
-}
+      .form-group {
+        margin: 10px 0;
+        text-align: left;
+      }
 
-#contact-us-title {
-    color: #3498db;
-    font-size: 36px;
-    font-weight: bold;
-    margin: 40px 0;
-}
+      .form-group label {
+        display: block;
+        color: white;
+        font-weight: bold;
+      }
 
-#contact-form {
-    background-color: #3498db;
-    padding: 20px;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    margin: 0 auto;
-}
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 5px;
+      }
 
-.form-group {
-    margin: 10px 0;
-    text-align: left;
-}
+      .form-group textarea {
+        resize: vertical;
+      }
 
-.form-group label {
-    display: block;
-    color: white;
-    font-weight: bold;
-}
+      button[type="submit"] {
+        background-color: white;
+        color: #3498db;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: none;
-    border-radius: 5px;
-}
+      #form-error-message {
+        color: red;
+        font-weight: bold;
+      }
 
-.form-group textarea {
-    resize: vertical;
-}
+      .hidden {
+        display: none;
+      }
 
-button[type="submit"] {
-    background-color: white;
-    color: #3498db;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
+      footer {
+        background-color: #3498db;
+        color: #fff;
+        padding: 20px 0;
+      }
 
-#form-error-message {
-    color: red;
-    font-weight: bold;
-}
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-.hidden {
-    display: none;
-}
+      .footer-logo img {
+        width: 100px;
+        margin-right: 50px;
+      }
 
-footer {
-    background-color: #3498db; 
-    color: #fff;
-    padding: 20px 0;
-}
+      .footer-info {
+        flex: 2;
+      }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
 
-.footer-logo img {
-    width: 100px;
-    margin-right: 50px;
-}
+      .footer-links li {
+        margin-bottom: 10px;
+      }
 
-.footer-info {
-    flex: 2;
-}
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+      }
 
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
+      .footer-social {
+        flex: 1;
+        margin-left: 200px;
+      }
 
-.footer-links li {
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-social {
-    flex: 1;
-    margin-left: 200px;
-}
-
-.social-icon {
-    display: inline-block;
-    margin-right: 10px;
-    color: #fff;
-    text-decoration: none;
-}
-.social {
+      .social-icon {
+        display: inline-block;
+        margin-right: 10px;
+        color: #fff;
+        text-decoration: none;
+      }
+      .social {
         justify-self: center;
       }
 
+      /* CSS for the hamburger icon */
+      #nav-icon {
+        display: block;
+        cursor: pointer;
+      }
 
+      #nav-icon .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #3498db;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+
+      #nav-icon.open .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      #nav-icon.open .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      #nav-icon.open .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      /* Hide navigation links by default */
+      #nav {
+        display: none;
+      }
+
+      /* Media query for phone resolution (600px or below) */
+      @media only screen and (max-width: 600px) {
+        #nav {
+          display: block;
+        }
+      }
+
+      /* Media query for phone resolution (600px or below) */
+      @media only screen and (max-width: 600px) {
+        body {
+          font-size: 16px;
+        }
+
+        header {
+          padding: 10px;
+        }
+
+        #logo {
+          font-size: 20px;
+        }
+
+        #nav {
+          display: none;
+        }
+
+        #hero {
+          margin-left: 0;
+          padding-bottom: 100px;
+        }
+
+        #hero p {
+          font-size: 20px;
+        }
+
+        #hero h1 {
+          font-size: 28px;
+        }
+
+        .why-box-container {
+          flex-direction: column;
+        }
+
+        .why-box {
+          margin: 10px 0;
+        }
+
+        #join-us-title {
+          margin: 5rem 20px;
+        }
+
+        #join-us-section {
+          margin-right: 0;
+        }
+
+        #join-us-button {
+          font-size: 18px;
+        }
+
+        #contact-form {
+          max-width: 100%;
+        }
+
+        #contact-us-title {
+          margin: 20px 0;
+        }
+
+        /* Media query for phone resolution (600px or below) */
+@media only screen and (max-width: 600px) {
+    #hero {
+        padding: 10px; /* Reduce top and bottom padding */
+    }
+
+    #hero p {
+        font-size: 20px; /* Reduce the font size of the paragraph */
+        margin-bottom: 10px; /* Add space at the bottom of the paragraph */
+    }
+
+    #hero h1 {
+        font-size: 32px; /* Reduce the font size of the heading */
+        margin-top: 10px; /* Increase space at the top of the heading */
+        margin-bottom: 10px; /* Add space at the bottom of the heading */
+    }
+
+    #get-started {
+        font-size: 16px; /* Reduce the font size of the button */
+        margin-top: 20px; /* Increase space at the top of the button */
+    }
+}
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- HERO SECTION -->
     <header>
-        <div id="logo" href="#hero">Ex<span style="color: #3498db;">pen</span>syy</div>
-        <nav id="nav">
-            <a href="#hero">HOME</a>
-            <a href="#why-expenssy">WHY EXPENSYY</a>
-            <a href="#join-us-section">JOIN US</a>
-            <a href="#contact-us">CONTACT US</a>
-        </nav>
-        <a id="get-started" href="about.html">About us</a>
+      <div id="logo" href="#hero">
+        Ex<span style="color: #3498db">pen</span>syy
+      </div>
+      <nav id="nav">
+        <a href="#hero">HOME</a>
+        <a href="#why-expenssy">WHY EXPENSYY</a>
+        <a href="#join-us-section">JOIN US</a>
+        <a href="#contact-us">CONTACT US</a>
+      </nav>
+      <a id="get-started" href="about.html">About us</a>
     </header>
 
-    <div id="hero">
-        <p>Welcome to Expensyy</p>
-        <h1>Your Financial Adventure <br> Awaits</h1>
-        <a id="get-started" href="expense.html">Get Started Now</a>
+    <div id="nav-icon">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
 
+    <div id="hero">
+      <p>Welcome to Expensyy</p>
+      <h1>
+        Your Financial Adventure <br />
+        Awaits
+      </h1>
+      <a id="get-started" href="expense.html">Get Started Now</a>
     </div>
     <!-- WHY EXPENSYY -->
     <div id="why-expenssy">
-        <div id="why-expenssy-title">Why Expensyy?</div>
-        <div class="why-box-container">
-            <div class="why-box">
-                <h2>Simplicity</h2>
-                <p>We've designed Expenssy to be user-friendly, so you can start 
-                    tracking your expenses effortlessly.</p>
-            </div>
-            <div class="why-box">
-                <h2>Security</h2>
-                <p>Your financial data is protected with state-of-the-art security
-                     features.</p>
-            </div>
-            <div class="why-box">
-                <h2>Customization</h2>
-                <p>Tailor Expenssy to fit your unique financial journey with
-                     customizable categories and budgets.</p>
-            </div>
+      <div id="why-expenssy-title">Why Expensyy?</div>
+      <div class="why-box-container">
+        <div class="why-box">
+          <h2>Simplicity</h2>
+          <p>
+            We've designed Expenssy to be user-friendly, so you can start
+            tracking your expenses effortlessly.
+          </p>
         </div>
+        <div class="why-box">
+          <h2>Security</h2>
+          <p>
+            Your financial data is protected with state-of-the-art security
+            features.
+          </p>
+        </div>
+        <div class="why-box">
+          <h2>Customization</h2>
+          <p>
+            Tailor Expenssy to fit your unique financial journey with
+            customizable categories and budgets.
+          </p>
+        </div>
+      </div>
     </div>
 
-   <!-- JOIN US SECTION -->
+    <!-- JOIN US SECTION -->
     <div id="join-us-section">
-        <div id="join-us-title">Join the Expenssy Community</div>
-        <div id="join-us-content">
-            <p>
-                Ready to take control of your finances? <br>Join the Expenssy community 
-                today and unlock a world <br> of financial possibilities. 
-                Sign up for a free account now.
-            </p>
-            <a id="join-us-button" href="expense.html">Join Us</a>
-        </div>
+      <div id="join-us-title">Join the Expenssy Community</div>
+      <div id="join-us-content">
+        <p>
+          Ready to take control of your finances? <br />Join the Expenssy
+          community today and unlock a world <br />
+          of financial possibilities. Sign up for a free account now.
+        </p>
+        <a id="join-us-button" href="expense.html">Join Us</a>
+      </div>
     </div>
 
-   <!-- CONTACT US SECTION -->
+    <!-- CONTACT US SECTION -->
     <div id="contact-us">
-        <div id="contact-us-title">Contact Us</div>
-        <div id="contact-form">
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-            <div id="form-error-message" class="hidden">Please fill out all fields 
-                correctly.</div>
+      <div id="contact-us-title">Contact Us</div>
+      <div id="contact-form">
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <div id="form-error-message" class="hidden">
+          Please fill out all fields correctly.
         </div>
+      </div>
     </div>
 
     <!-- FOOTER SECTION -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="./expensyy/images/expensyylogo.png" alt="Expensyy Logo">
-            </div>
-            <div class="footer-info">
-                <p>Contact Us: contact@expensyy.com</p>
-                <p>123 Main Street, Lagos State, Nigeria</p>
-                <p>Phone: +234-703-563-1881</p>
-            </div>
-            <div class="footer-links">
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./about.html">About Us</a></li>
-                    <li><a href="./expense.html">Join Us</a></li>
-                    <li><a href="./about.html">Contact Us</a></li>
-                  </ul>
-            </div>
-            <div class="footer-social">
-                <a href="#" class="social-icon">Facebook</a>
-                <a href="#" class="social-icon">Twitter</a>
-                <a href="#" class="social-icon">LinkedIn</a>
-            </div>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="./expensyy/images/expensyylogo.png" alt="Expensyy Logo" />
         </div>
+        <div class="footer-info">
+          <p>Contact Us: contact@expensyy.com</p>
+          <p>123 Main Street, Lagos State, Nigeria</p>
+          <p>Phone: +234-703-563-1881</p>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="./expense.html">Join Us</a></li>
+            <li><a href="./about.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-icon">Facebook</a>
+          <a href="#" class="social-icon">Twitter</a>
+          <a href="#" class="social-icon">LinkedIn</a>
+        </div>
+      </div>
     </footer>
 
     <!-- JAVASCRIPT COMPONENT OF PAGE -->
     <script>
-        // Initialize an array to store expenses
-        let expenses = [];
-      
-        document.addEventListener("DOMContentLoaded", function () {
-          // Add a submit event listener to the form
-          const expenseForm = document.getElementById("expense-form");
-          expenseForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent the default form submission behavior
-      
-            // Call the addExpense function when the form is submitted
-            addExpense();
-          });
+      // Initialize an array to store expenses
+      let expenses = [];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add a submit event listener to the form
+        const expenseForm = document.getElementById("expense-form");
+        expenseForm.addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+
+          // Call the addExpense function when the form is submitted
+          addExpense();
         });
-      
-        function addExpense() {
-          const dateInput = document.getElementById("date");
-          const amountInput = document.getElementById("amount");
-          const descriptionInput = document.getElementById("description");
-          const categoryInput = document.getElementById("category");
-          const paymentMethodInput = document.getElementById("payment-method");
-      
-          const date = dateInput.value;
-          const amount = parseFloat(amountInput.value);
-          const description = descriptionInput.value;
-          const category = categoryInput.value;
-          const paymentMethod = paymentMethodInput.value;
-      
-          // Clear any previous error messages
-          clearErrorMessages();
-      
-          // Validate input and display error messages
-          if (!date) {
-            displayErrorMessage(dateInput, "Please enter a date", "date-error");
-            return;
-          }
-      
-          if (isNaN(amount)) {
-            displayErrorMessage(amountInput, "Please enter a valid amount", "amount-error");
-            return;
-          }
-      
-          if (!description) {
-            displayErrorMessage(descriptionInput, "Please enter a description", "description-error");
-            return;
-          }
-      
-          if (!category) {
-            displayErrorMessage(categoryInput, "Please enter a category", "category-error");
-            return;
-          }
-      
-          if (!paymentMethod) {
-            displayErrorMessage(paymentMethodInput, "Please enter a payment method", "payment-method-error");
-            return;
-          }
-      
-          // Create an expense object
-          const expense = {
-            date,
-            amount,
-            description,
-            category,
-            paymentMethod,
-          };
-      
-          // Add expense to the array
-          expenses.push(expense);
-      
-          // Update the table and total expenses
-          updateTable();
-          updateTotalExpenses();
-      
-          // Clear the form
-          document.getElementById("expense-form").reset();
+      });
+
+      function addExpense() {
+        const dateInput = document.getElementById("date");
+        const amountInput = document.getElementById("amount");
+        const descriptionInput = document.getElementById("description");
+        const categoryInput = document.getElementById("category");
+        const paymentMethodInput = document.getElementById("payment-method");
+
+        const date = dateInput.value;
+        const amount = parseFloat(amountInput.value);
+        const description = descriptionInput.value;
+        const category = categoryInput.value;
+        const paymentMethod = paymentMethodInput.value;
+
+        // Clear any previous error messages
+        clearErrorMessages();
+
+        // Validate input and display error messages
+        if (!date) {
+          displayErrorMessage(dateInput, "Please enter a date", "date-error");
+          return;
         }
-      
-        function updateTable() {
-          const expenseList = document.getElementById("expense-list");
-          expenseList.innerHTML = "";
-      
-          for (let i = 0; i < expenses.length; i++) {
-            const expense = expenses[i];
-            const row = expenseList.insertRow();
-      
-            row.innerHTML = `
+
+        if (isNaN(amount)) {
+          displayErrorMessage(
+            amountInput,
+            "Please enter a valid amount",
+            "amount-error"
+          );
+          return;
+        }
+
+        if (!description) {
+          displayErrorMessage(
+            descriptionInput,
+            "Please enter a description",
+            "description-error"
+          );
+          return;
+        }
+
+        if (!category) {
+          displayErrorMessage(
+            categoryInput,
+            "Please enter a category",
+            "category-error"
+          );
+          return;
+        }
+
+        if (!paymentMethod) {
+          displayErrorMessage(
+            paymentMethodInput,
+            "Please enter a payment method",
+            "payment-method-error"
+          );
+          return;
+        }
+
+        // Create an expense object
+        const expense = {
+          date,
+          amount,
+          description,
+          category,
+          paymentMethod,
+        };
+
+        // Add expense to the array
+        expenses.push(expense);
+
+        // Update the table and total expenses
+        updateTable();
+        updateTotalExpenses();
+
+        // Clear the form
+        document.getElementById("expense-form").reset();
+      }
+
+      function updateTable() {
+        const expenseList = document.getElementById("expense-list");
+        expenseList.innerHTML = "";
+
+        for (let i = 0; i < expenses.length; i++) {
+          const expense = expenses[i];
+          const row = expenseList.insertRow();
+
+          row.innerHTML = `
                       <td>${expense.date}</td>
                       <td>N${expense.amount.toFixed(2)}</td>
                       <td>${expense.description}</td>
                       <td>${expense.category}</td>
                       <td>${expense.paymentMethod}</td>
                   `;
-          }
         }
-      
-        function updateTotalExpenses() {
-          const totalExpenses = document.getElementById("total-expenses");
-          const total = expenses.reduce(
-            (acc, expense) => acc + expense.amount,
-            0
-          );
-          totalExpenses.textContent = total.toFixed(2);
-        }
-      
-        function clearErrorMessages() {
-          const errorElements = document.querySelectorAll(".error-message");
-          errorElements.forEach((element) => (element.textContent = ""));
-        }
-      
-        function displayErrorMessage(inputElement, message, errorElementId) {
-          const errorMessage = document.getElementById(errorElementId);
-          errorMessage.textContent = message;
-        }
-      </script>
-      
-</body>
+      }
+
+      function updateTotalExpenses() {
+        const totalExpenses = document.getElementById("total-expenses");
+        const total = expenses.reduce(
+          (acc, expense) => acc + expense.amount,
+          0
+        );
+        totalExpenses.textContent = total.toFixed(2);
+      }
+
+      function clearErrorMessages() {
+        const errorElements = document.querySelectorAll(".error-message");
+        errorElements.forEach((element) => (element.textContent = ""));
+      }
+
+      function displayErrorMessage(inputElement, message, errorElementId) {
+        const errorMessage = document.getElementById(errorElementId);
+        errorMessage.textContent = message;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const navIcon = document.getElementById("nav-icon");
+        const nav = document.getElementById("nav");
+
+        navIcon.addEventListener("click", function () {
+          navIcon.classList.toggle("open");
+          nav.style.display = nav.style.display === "block" ? "none" : "block";
+        });
+      });
+    </script>
+  </body>
 </html>
