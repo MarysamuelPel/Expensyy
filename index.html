@@ -113,6 +113,22 @@
         background-color: #2186c9;
       }
 
+      #about-us-link{
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+      }
+
+      #about-us-link:hover{
+        background-color: #2186c9;
+      }
+
       #why-expenssy {
         background-color: #f5f5f5;
         padding: 20px;
@@ -336,12 +352,12 @@
 
       /* CSS for the hamburger icon */
       #nav-icon {
-        display: block;
+        display: none;
         cursor: pointer;
       }
 
       #nav-icon .bar {
-        width: 25px;
+        width: 30px;
         height: 3px;
         background-color: #3498db;
         margin: 6px 0;
@@ -362,13 +378,21 @@
 
       /* Hide navigation links by default */
       #nav {
-        display: none;
+        display: block;
       }
 
       /* Media query for phone resolution (600px or below) */
       @media only screen and (max-width: 600px) {
         #nav {
+          display: none;
+        }
+
+        #nav-icon {
           display: block;
+        }
+
+        body {
+          font-size: 16px;
         }
       }
 
@@ -393,6 +417,8 @@
         #hero {
           margin-left: 0;
           padding-bottom: 100px;
+          background-image: none;
+          margin: 20px 20px 0 0;
         }
 
         #hero p {
@@ -417,6 +443,7 @@
 
         #join-us-section {
           margin-right: 0;
+          background-image: none;
         }
 
         #join-us-button {
@@ -431,28 +458,28 @@
           margin: 20px 0;
         }
 
-        /* Media query for phone resolution (600px or below) */
-@media only screen and (max-width: 600px) {
-    #hero {
-        padding: 10px; /* Reduce top and bottom padding */
-    }
+        footer {
+          padding: 10px 0;
+        }
 
-    #hero p {
-        font-size: 20px; /* Reduce the font size of the paragraph */
-        margin-bottom: 10px; /* Add space at the bottom of the paragraph */
-    }
+        .footer-container {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          margin: 0;
+        }
 
-    #hero h1 {
-        font-size: 32px; /* Reduce the font size of the heading */
-        margin-top: 10px; /* Increase space at the top of the heading */
-        margin-bottom: 10px; /* Add space at the bottom of the heading */
-    }
+        .footer-logo img {
+          margin: 0;
+        }
 
-    #get-started {
-        font-size: 16px; /* Reduce the font size of the button */
-        margin-top: 20px; /* Increase space at the top of the button */
-    }
-}
+        .footer-social {
+          margin: 0;
+        }
+
+        .social-icon {
+          margin: 5px 0;
+        }
       }
     </style>
   </head>
@@ -468,14 +495,14 @@
         <a href="#join-us-section">JOIN US</a>
         <a href="#contact-us">CONTACT US</a>
       </nav>
-      <a id="get-started" href="about.html">About us</a>
-    </header>
+      <a id="about-us-link" href="about.html">About us</a>
 
-    <div id="nav-icon">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
+      <div id="nav-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </header>
 
     <div id="hero">
       <p>Welcome to Expensyy</p>
@@ -580,144 +607,37 @@
 
     <!-- JAVASCRIPT COMPONENT OF PAGE -->
     <script>
-      // Initialize an array to store expenses
-      let expenses = [];
+            document.addEventListener("DOMContentLoaded", function () {
+              const navIcon = document.getElementById("nav-icon");
+              const nav = document.getElementById("nav");
 
-      document.addEventListener("DOMContentLoaded", function () {
-        // Add a submit event listener to the form
-        const expenseForm = document.getElementById("expense-form");
-        expenseForm.addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent the default form submission behavior
+              navIcon.addEventListener("click", function () {
+                navIcon.classList.toggle("open");
+                nav.style.display = nav.style.display === "block" ? "none" : "block";
+              });
+            });
 
-          // Call the addExpense function when the form is submitted
-          addExpense();
-        });
-      });
+            // Function to smoothly scroll to a target element
+            function scrollToElement(target) {
+              document.querySelector(target).scrollIntoView({
+                behavior: "smooth",
+              });
+            }
 
-      function addExpense() {
-        const dateInput = document.getElementById("date");
-        const amountInput = document.getElementById("amount");
-        const descriptionInput = document.getElementById("description");
-        const categoryInput = document.getElementById("category");
-        const paymentMethodInput = document.getElementById("payment-method");
+            document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll("#nav a");
 
-        const date = dateInput.value;
-        const amount = parseFloat(amountInput.value);
-        const description = descriptionInput.value;
-        const category = categoryInput.value;
-        const paymentMethod = paymentMethodInput.value;
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = this.getAttribute("href");
+      scrollToElement(target);
+    });
+  });
+}); // Added the missing closing bracket
 
-        // Clear any previous error messages
-        clearErrorMessages();
+  
 
-        // Validate input and display error messages
-        if (!date) {
-          displayErrorMessage(dateInput, "Please enter a date", "date-error");
-          return;
-        }
-
-        if (isNaN(amount)) {
-          displayErrorMessage(
-            amountInput,
-            "Please enter a valid amount",
-            "amount-error"
-          );
-          return;
-        }
-
-        if (!description) {
-          displayErrorMessage(
-            descriptionInput,
-            "Please enter a description",
-            "description-error"
-          );
-          return;
-        }
-
-        if (!category) {
-          displayErrorMessage(
-            categoryInput,
-            "Please enter a category",
-            "category-error"
-          );
-          return;
-        }
-
-        if (!paymentMethod) {
-          displayErrorMessage(
-            paymentMethodInput,
-            "Please enter a payment method",
-            "payment-method-error"
-          );
-          return;
-        }
-
-        // Create an expense object
-        const expense = {
-          date,
-          amount,
-          description,
-          category,
-          paymentMethod,
-        };
-
-        // Add expense to the array
-        expenses.push(expense);
-
-        // Update the table and total expenses
-        updateTable();
-        updateTotalExpenses();
-
-        // Clear the form
-        document.getElementById("expense-form").reset();
-      }
-
-      function updateTable() {
-        const expenseList = document.getElementById("expense-list");
-        expenseList.innerHTML = "";
-
-        for (let i = 0; i < expenses.length; i++) {
-          const expense = expenses[i];
-          const row = expenseList.insertRow();
-
-          row.innerHTML = `
-                      <td>${expense.date}</td>
-                      <td>N${expense.amount.toFixed(2)}</td>
-                      <td>${expense.description}</td>
-                      <td>${expense.category}</td>
-                      <td>${expense.paymentMethod}</td>
-                  `;
-        }
-      }
-
-      function updateTotalExpenses() {
-        const totalExpenses = document.getElementById("total-expenses");
-        const total = expenses.reduce(
-          (acc, expense) => acc + expense.amount,
-          0
-        );
-        totalExpenses.textContent = total.toFixed(2);
-      }
-
-      function clearErrorMessages() {
-        const errorElements = document.querySelectorAll(".error-message");
-        errorElements.forEach((element) => (element.textContent = ""));
-      }
-
-      function displayErrorMessage(inputElement, message, errorElementId) {
-        const errorMessage = document.getElementById(errorElementId);
-        errorMessage.textContent = message;
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const navIcon = document.getElementById("nav-icon");
-        const nav = document.getElementById("nav");
-
-        navIcon.addEventListener("click", function () {
-          navIcon.classList.toggle("open");
-          nav.style.display = nav.style.display === "block" ? "none" : "block";
-        });
-      });
     </script>
   </body>
 </html>

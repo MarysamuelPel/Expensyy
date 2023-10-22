@@ -139,19 +139,19 @@
       }
 
       @media (max-width: 600px) {
-    /* Adjust styles for smaller screens */
-    body {
-      font-size: 14px;
-    }
+        /* Adjust styles for smaller screens */
+        body {
+          font-size: 14px;
+        }
 
-    .container {
-      padding: 10px;
-    }
+        .container {
+          padding: 10px;
+        }
 
-   button{
-    margin-left: 90px;
-   }
-  }
+        button {
+          margin-left: 90px;
+        }
+      }
     </style>
   </head>
 
@@ -175,7 +175,9 @@
         <select id="category" required>
           <option value="">Select a Category</option>
           <option value="Personal Expenses">Personal Expenses</option>
-          <option value="Entertainment and Leisure">Entertainment and Leisure</option>
+          <option value="Entertainment and Leisure">
+            Entertainment and Leisure
+          </option>
           <option value="Health and Wellness">Health and Wellness</option>
           <option value="Education">Education</option>
           <option value="Housing">Housing</option>
@@ -184,9 +186,13 @@
           <option value="Business Expenses">Business Expenses</option>
           <option value="Food and Dining">Food and Dining</option>
           <option value="Charity and Donations">Charity and Donations</option>
-          <option value="Savings and Investments">Savings and Investments</option>
+          <option value="Savings and Investments">
+            Savings and Investments
+          </option>
           <option value="Utilities">Utilities</option>
-          <option value="Childcare and Education">Childcare and Education</option>
+          <option value="Childcare and Education">
+            Childcare and Education
+          </option>
           <option value="Gifts and Celebrations">Gifts and Celebrations</option>
           <option value="Miscellaneous">Miscellaneous</option>
         </select>
@@ -199,7 +205,9 @@
           <option value="Credit Card">Credit Card</option>
           <option value="Bank Transfer">Bank Transfer</option>
           <option value="Mobile Payment Apps">Mobile Payment Apps</option>
-          <option value="Online Payment Platforms">Online Payment Platforms</option>
+          <option value="Online Payment Platforms">
+            Online Payment Platforms
+          </option>
           <option value="Checks">Checks</option>
           <option value="Cryptocurrency">Cryptocurrency</option>
           <option value="E-Wallets">E-Wallets</option>
@@ -208,10 +216,11 @@
           <option value="Traveler's Checks">Traveler's Checks</option>
           <option value="Gift Cards">Gift Cards</option>
           <option value="Online Banking">Online Banking</option>
-          <option value="Peer-to-Peer (P2P) Payment Services">Peer-to-Peer (P2P) Payment Services</option>
+          <option value="Peer-to-Peer (P2P) Payment Services">
+            Peer-to-Peer (P2P) Payment Services
+          </option>
           <option value="Prepaid Cards">Prepaid Cards</option>
           <option value="Virtual Credit Cards">Virtual Credit Cards</option>
-          
         </select>
         <div class="error-message" id="payment-method-error"></div>
 
@@ -271,22 +280,38 @@
         }
 
         if (isNaN(amount)) {
-          displayErrorMessage(amountInput, "Please enter a valid amount", "amount-error");
+          displayErrorMessage(
+            amountInput,
+            "Please enter a valid amount",
+            "amount-error"
+          );
           return;
         }
 
         if (!description) {
-          displayErrorMessage(descriptionInput, "Please enter a description", "description-error");
+          displayErrorMessage(
+            descriptionInput,
+            "Please enter a description",
+            "description-error"
+          );
           return;
         }
 
         if (category === "") {
-          displayErrorMessage(categorySelect, "Please select a category", "category-error");
+          displayErrorMessage(
+            categorySelect,
+            "Please select a category",
+            "category-error"
+          );
           return;
         }
 
         if (paymentMethod === "") {
-          displayErrorMessage(paymentMethodSelect, "Please select a payment method", "payment-method-error");
+          displayErrorMessage(
+            paymentMethodSelect,
+            "Please select a payment method",
+            "payment-method-error"
+          );
           return;
         }
 
